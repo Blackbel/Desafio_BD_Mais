@@ -10,7 +10,7 @@ library(tidyverse)
 
 # Configurando ID do projeto
 
-basedosdados::set_billing_id("teste-342700")
+basedosdados::set_billing_id("")
 
 ###############################################
 
