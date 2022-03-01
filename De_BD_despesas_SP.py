@@ -28,11 +28,11 @@ ORDER BY ano
 
 ###############################################
 
-conv_gra <- bd.read_sql(consu_siconfi, billing_project_id='teste-342700')
+conv_gra = bd.read_sql(consu_siconfi, billing_project_id='seu-id')
 
 # Criando o grafico para a visualização 
 
-datavi = px.bar(con_gra , x="ano", y="valor_despesa", title = "Despesas Orçamentarias do Estado de São Paulo
+datavi = px.bar(conv_gra , x="ano", y="valor_despesa", title = "Despesas Orçamentarias do Estado de São Paulo
 em 15 do plano Real")
 datavi.show()
              
