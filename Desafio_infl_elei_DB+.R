@@ -1,6 +1,6 @@
 # Instalando e carregando o pacote basededados para consulta dos dados e o pacote
 # Tidyverse para visualização grafica e finalmente o biblioteca patchwork.
-# para comparação dos graficos.
+# Para comparação dos graficos.
 
 install.packages("basedosdados")
 install.packages("tidyverse")
@@ -11,13 +11,13 @@ library(tidyverse)
 
 ###############################################
 
-# Configurando ID do projeto
+# Configurando ID do projeto.
 
 basedosdados::set_billing_id("seu_id_do_projeto")
 
 ###############################################
 
-# Conectando nas bases (TSE e INPC) e filtrando os resultados
+# Conectando nas bases (TSE e INPC) e filtrando os resultados.
 
 elei_presi <- bdplyr("br_tse_eleicoes.resultados_candidato") %>%
   dplyr::filter(cargo == "presidente" , resultado == "eleito")  %>%
@@ -32,7 +32,7 @@ infla_redemo <- bdplyr("br_ibge_inpc.mes_brasil")  %>%
 jun_tab <- dplyr::left_join(elei_presi, infla_redemo, by = "ano") %>% arrange(ano)
 
 
-# Conectando na INPC (Analise anos militares)
+# Conectando na INPC (Analise anos militares e primeiro governo pós redemocratização).
 
 infla_mili <- bdplyr("br_ibge_inpc.mes_brasil")  %>%
   dplyr::filter(between(ano,1980,1993) , mes == 12) %>%
@@ -41,13 +41,13 @@ infla_mili <- bdplyr("br_ibge_inpc.mes_brasil")  %>%
 
 ###############################################
 
-# Visualição dos Dados
+# Visualição dos Dados.
 
-# Grafico análise anos militares
+# Gráfico análise anos militares.
 
 
 graf_pe_mili <- ggplot(infla_mili, aes(y = variacao_anual, x = ano)) + 
-  geom_point(na.rm = TRUE) +  
+  geom_line(na.rm = TRUE) +  
   scale_x_continuous(name = "Ano", breaks = seq(1980,1993)) +
   scale_y_continuous(name="Variação da Inflação", breaks = seq(1,6000, by = 200)) +
   ggtitle("Variação da inflação em anos militares e o primeiro governo 
@@ -55,7 +55,7 @@ graf_pe_mili <- ggplot(infla_mili, aes(y = variacao_anual, x = ano)) +
   theme(aspect.ratio = 1)
 
 
-# Grafico análise anos pós remocratização
+# Gráfico análise anos pós remocratização.
 
 # Definição de cores
 cores <- c("PT" = "red",
@@ -69,7 +69,8 @@ graf_pe_rede <- ggplot(jun_tab, aes(y = variacao_anual, x = ano, color = sigla_p
   ggtitle("Variação da inflação pós redemocratização (Do segundo governo a 2018)") +
   theme_gray()
 
-# Comparação entre os dois gráficos
+# Comparação entre os dois gráficos.
 
   graf_pe_mili + graf_pe_rede
   
+###############################################
