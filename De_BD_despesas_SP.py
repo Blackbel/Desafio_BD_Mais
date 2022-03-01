@@ -2,7 +2,7 @@
 # na tabela de dados e a bibliteca plotly para a criação do graficao
 ###############################################
 
-!pip install basededados
+!pip install basedosdados
 !pip install plotly
 import basedosdados as bd
 import plotly.express as px
@@ -33,7 +33,7 @@ conv_gra = bd.read_sql(consu_siconfi, billing_project_id='seu-id')
 # Criando o grafico para a visualização 
 
 datavi = px.bar(conv_gra , x="ano", y="valor_despesa", title = "Despesas Orçamentarias do Estado de São Paulo
-em 15 anos do plano Real")
+em 20 anos do plano Real")
 datavi.show()
              
 ###############################################             
