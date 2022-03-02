@@ -1,6 +1,6 @@
 # Instalando e carregando o pacote basededados para consulta dos dados e o pacote
-# Tidyverse para visualização grafica e finalmente o biblioteca patchwork.
-# Para comparação dos graficos.
+# Tidyverse para visualização grafica e finalmente o pacote patchwork.
+# Para comparação dos gráficos.
 
 install.packages("basedosdados")
 install.packages("tidyverse")
@@ -32,7 +32,7 @@ infla_redemo <- bdplyr("br_ibge_inpc.mes_brasil")  %>%
 jun_tab <- dplyr::left_join(elei_presi, infla_redemo, by = "ano") %>% arrange(ano)
 
 
-# Conectando na INPC (Analise anos militares e primeiro governo pós redemocratização).
+# Conectando na INPC (Análise anos militares e primeiro governo pós redemocratização).
 
 infla_mili <- bdplyr("br_ibge_inpc.mes_brasil")  %>%
   dplyr::filter(between(ano,1980,1993) , mes == 12) %>%
@@ -41,7 +41,7 @@ infla_mili <- bdplyr("br_ibge_inpc.mes_brasil")  %>%
 
 ###############################################
 
-# Visualição dos Dados.
+# Visualização dos Dados.
 
 # Gráfico análise anos militares.
 
@@ -55,7 +55,7 @@ graf_pe_mili <- ggplot(infla_mili, aes(y = variacao_anual, x = ano)) +
   theme(aspect.ratio = 1)
 
 
-# Gráfico análise anos pós remocratização.
+# Gráfico análise anos pós redemocratização.
 
 # Definição de cores
 cores <- c("PT" = "red",
