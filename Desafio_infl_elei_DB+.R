@@ -29,7 +29,7 @@ infla_redemo <- bdplyr("br_ibge_inpc.mes_brasil")  %>%
     dplyr::select(ano, variacao_anual)
 
 
-jun_tab <- dplyr::left_join(elei_presi, infla_redemo, by = "ano") %>% arrange(ano)
+jun_tab <- dplyr::right_join(elei_presi, infla_redemo, by = "ano") %>% arrange(ano)
 
 
 # Conectando na INPC (Análise anos militares e primeiro governo pós redemocratização).
@@ -50,9 +50,11 @@ graf_pe_mili <- ggplot(infla_mili, aes(y = variacao_anual, x = ano)) +
   geom_line(na.rm = TRUE) +  
   scale_x_continuous(name = "Ano", breaks = seq(1980,1993)) +
   scale_y_continuous(name="Variação da Inflação", breaks = seq(1,6000, by = 200)) +
-  ggtitle("Variação da inflação em anos militares e o primeiro governo 
-  após a redemocratização (primeiro governo 1990-1993)") +
-  theme(aspect.ratio = 1)
+  ggtitle("Variação da inflação em anos militares e no
+ o primeiro governo 
+ após a redemocratização 
+ (primeiro governo 1990-1993)") +
+  theme(aspect.ratio = 1.3)
 
 
 # Gráfico análise anos pós redemocratização.
@@ -63,14 +65,15 @@ cores <- c("PT" = "red",
 
 graf_pe_rede <- ggplot(jun_tab, aes(y = variacao_anual, x = ano, color = sigla_partido)) + 
   geom_point(na.rm = TRUE) +  
-  scale_x_continuous(name = "Ano", breaks = seq(1994,2018, by = 4)) +
+  scale_x_continuous(name = "Ano", breaks = seq(1994,2018, by = 1)) +
   scale_y_continuous(name="Variação da Inflação", breaks = seq(1,1000, by = 50)) +
   scale_color_manual("Legendas", values = cores) +
   ggtitle("Variação da inflação pós redemocratização (Do segundo governo a 2018)") +
-  theme_gray()
+  theme(axis.text = element_text(size = 8.7))
 
-# Comparação entre os dois gráficos.
+# Comparação entre os dois graficos
 
-  graf_pe_mili + graf_pe_rede
+  graf_pe_mili | graf_pe_rede
+  
   
 ###############################################
