@@ -1,6 +1,6 @@
 # Desafio_BD+
 
-## Comparação da taxa de infalção entre os períodos de 1980-2018.
+## Comparação da taxa de inflação entre os períodos de 1980-2018.
  
  Script em R que compara a inflação nos periodos antes e depois da redemocratização.
  Esse script  mostra o quão alta era taxa de inflação nos governos militares. A grave questão econômica da alta inflação
