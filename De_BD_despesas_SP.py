@@ -1,5 +1,5 @@
 # Instalando e carregando as biblioteca basededados para executar a query
-# na tabela de dados e a bibliteca plotly para a criação do grafico
+# na tabela de dados e a bibliteca plotly para a criação do grafico.
 ###############################################
 
 !pip install basedosdados
@@ -25,7 +25,8 @@ ORDER BY ano
 
 ###############################################
 
-# Criando uma variavel para consulta SQL na base br_me_siconfi.municipio_despesas_orcamentarias
+# Criando uma variavel para consulta SQL na base br_me_siconfi.municipio_despesas_orcamentarias 
+# e configuração do ID do projeto.
 
 conv_gra = bd.read_sql(consu_siconfi, billing_project_id='seu_id')
 
