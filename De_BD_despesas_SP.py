@@ -33,7 +33,7 @@ conv_gra = bd.read_sql(consu_siconfi, billing_project_id='seu_id')
 
 # Criando o grafico para a visualização 
 
-datavi = px.bar(conv_gra , x="ano", y="valor_despesa", title = "Despesas Orçamentarias do Estado de São Pauloem 20 anos do plano Real")
+datavi = px.bar(conv_gra , x="ano", y="valor_despesa", title = "Despesas Orçamentarias do Estado de São Paulo em 20 anos do plano Real")
 datavi.update_xaxes(title_text="Ano")
 datavi.update_yaxes(title_text="Despesas Orçamentarias")  
 datavi.show()
